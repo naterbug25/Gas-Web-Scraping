@@ -22,6 +22,7 @@ for City in City_List: # Loop through the list of cities
     City_Avg[City] = Date_Avg
 
     fig.add_trace(go.Scatter(x= City_Avg["Date"], y=City_Avg[City],name = City))
+    fig.update_xaxes(tickformat = '%B %d %Y')
 fig.update_layout(title="Local Gas Prices", xaxis_title="Date", yaxis_title="Price ($)")
 
 fig.show()
