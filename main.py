@@ -2,7 +2,7 @@ from requests_html import HTMLSession
 import pandas as pd
 from datetime import datetime
 from datetime import date
-
+import Plotter
 GAS_COLUMNS = ["Station", "City", "Price","Date","Time"]
 
 def Get_Gas_Price(_City_Data):
@@ -57,10 +57,11 @@ Price_Data = pd.DataFrame(columns = Store_Info.columns)
 
 for City in Store_Info.columns: # Loop through all of the columns (city names)
     Price_Data[City] = [Get_Gas_Price(Store_Info[City])] # Returns average and adds a column to the df
-Price_Data["Date"] = [date.today()]
+Price_Data["Date"] = [date.today().strftime("%m/%d/%Y")]
 Filename = "Results.csv"
 Price_Data.to_csv(Filename, mode='a', index=False, header=False)
 
+Plotter.Plot()
 
 
 
